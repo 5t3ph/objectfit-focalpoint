@@ -1,0 +1,6 @@
+[[redirects]]
+from = "/generate/"
+to = "/.netlify/functions/focalpoint"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "focalpoint"

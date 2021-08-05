@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- set pageTitle %}{{ title }}{% endset -%}
+{%- set pageDescription %}{{ meta.description }}{% endset -%}
+{%- set pageSocialImg %}{{ meta.url }}/img/object-fit-focal-point.png{% endset -%}
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{{pageTitle}}</title>
+	<meta
+		name="description"
+		content="{{pageDescription}}"
+	/>
+	<link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖼</text></svg>"
+    />
+	<link href="{{ '/style.css' | url }}" rel="stylesheet" />
+	<meta name="twitter:card" content="summary_large_image" />
+	{% if meta.twitterUsername %}
+	<meta name="twitter:creator" content="@{{ meta.twitterUsername }}" />
+	{% endif %}
+	<meta
+		name="twitter:title"
+		content="{{pageTitle}}"
+	/>
+	<meta
+		name="twitter:description"
+		content="{{pageDescription}}"
+	/>
+
+	<meta
+		name="og:title"
+		content="{{pageTitle}}"
+	/>
+	<meta
+		name="og:description"
+		content="{{pageDescription}}"
+	/>
+	<meta property="og:image" content="{{pageSocialImg}}" />
+	<meta name="twitter:image" content="{{pageSocialImg}}" />
+</head>
+<body>
+  <header>
+    {% if not page.fileSlug %}
+    <h1>Object-Fit Focal Point</h1>
+    <p>Generate the <code>object-position</code> value to capture an image's focal point given a custom aspect-ratio.</p>
+    {% else %}
+    <h1>Object-Fit Focal Point</h1>
+    <h2>Positioning Results</h2>
+    {% endif %}
+  </header>
+  <main {% if page.fileSlug %}class="generator"{% endif %}>
+  {{ content | safe }}
+  </main>
+</body>
+</html>

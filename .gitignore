@@ -1,0 +1,15 @@
+# dependencies installed by npm
+node_modules
+
+# build artefacts
+public
+netlify/functions/focalpoint/**
+!netlify/functions/focalpoint/index.js
+
+# secrets and errors
+.env
+.log
+
+# macOS related files
+.DS_Store
+

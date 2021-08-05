@@ -1,0 +1,16 @@
+---
+layout: base
+permalink:
+  focalpoint: "/generate/"
+eleventyComputed:
+  image: "{{ eleventy.serverless.query.image }}"
+  width: "{{ eleventy.serverless.query.width }}"
+  height: "{{ eleventy.serverless.query.height }}"
+  ratio: "{{ eleventy.serverless.query.ratio }}"
+  # image: "https://source.unsplash.com/WLUHO9A_xik/1600x900"
+  # width: 400
+  # height: 400
+templateEngineOverride: njk, md
+---
+
+{% focusedAspectRatioImg image, width, height, ratio %}
