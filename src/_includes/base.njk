@@ -21,7 +21,7 @@
 	<meta name="twitter:creator" content="@{{ meta.twitterUsername }}" />
 	{% endif %}
 	<meta
-		name="twitter:title"
+		name="twitter:text:title"
 		content="{{pageTitle}}"
 	/>
 	<meta
@@ -48,10 +48,16 @@
     {% else %}
     <h1>Object-Fit Focal Point</h1>
     <h2>Positioning Results</h2>
+		<a href="/#options"><em>API Options</em></a>
     {% endif %}
   </header>
-  <main {% if page.fileSlug %}class="generator"{% endif %}>
+  <main>
   {{ content | safe }}
   </main>
+	<footer>
+	<p>&copy; {% year %} <a href="https://twitter.com/5t3ph">Stephanie Eckles</a> <a href="https://github.com/5t3ph/objectfit-focalpoint">⭐️ Star on GitHub</a>
+	{%- if page.fileSlug %}<a href="/#options"><strong>About and API Options</strong></a>{% endif %}
+	</p>
+	</footer>
 </body>
 </html>

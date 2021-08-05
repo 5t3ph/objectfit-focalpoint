@@ -87,6 +87,8 @@ ${"```"}
     }
   );
 
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
   return {
     dir: {
       input: "src",

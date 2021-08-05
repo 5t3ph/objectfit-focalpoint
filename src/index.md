@@ -32,7 +32,7 @@ The primary dependency is the [sharp package resize API](https://sharp.pixelplum
 
 <small><em>Credit for demo photo goes to <a href="https://unsplash.com/photos/0kCrlrs8gXg">Joshua Oyebanji</a> on Unsplash</em>.</small>
 
-## API Options
+<h2 id="options">API Options</h2>
 
 Send a full, absolute image path as the `image` URL parameter to `{{ meta.url }}/generate/` to receive the default adjustments based on an aspect-ratio of `5/3`.
 
