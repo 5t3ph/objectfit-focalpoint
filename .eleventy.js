@@ -12,7 +12,7 @@ const imgPos = async (image, width, height) => {
       kernel: sharp.kernel.nearest,
       position: sharp.strategy.entropy,
     })
-    .toFile("output.png")
+    .toFile("./src/output.png")
     .then(({ cropOffsetLeft, cropOffsetTop }) => {
       return {
         x: cropOffsetLeft,

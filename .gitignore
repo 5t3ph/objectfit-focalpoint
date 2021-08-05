@@ -3,6 +3,7 @@ node_modules
 
 # build artefacts
 public
+output.png
 netlify/functions/focalpoint/**
 !netlify/functions/focalpoint/index.js
 
