@@ -36,13 +36,20 @@ main {
   display: grid;
   justify-items: center;
   gap: 2rem;
+}
+
+main,
+footer {
   width: min(80ch, 100vw - 3rem);
+}
+
+header {
+  width: min(60ch, 100vw - 3rem);
 }
 
 header,
 footer {
   text-align: center;
-  width: min(60ch, 100vw - 3rem);
 }
 
 footer {
@@ -55,6 +62,7 @@ footer {
 footer p {
   display: inline-grid;
   gap: 1rem;
+  align-items: center;
 }
 
 @media (min-width: 60ch) {
