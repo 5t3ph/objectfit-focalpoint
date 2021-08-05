@@ -13,3 +13,6 @@ netlify/functions/focalpoint/**
 # macOS related files
 .DS_Store
 
+
+# Local Netlify folder
+.netlify
