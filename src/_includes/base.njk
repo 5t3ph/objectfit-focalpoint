@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{%- set pageTitle %}{{ title }}{% endset -%}
-{%- set pageDescription %}{{ meta.description }}{% endset -%}
+{%- set pageTitle %}{{ meta.siteName }}{% endset -%}
+{%- set pageDescription %}{{ meta.siteDescription }}{% endset -%}
 {%- set pageSocialImg %}{{ meta.url }}/img/object-fit-focal-point.png{% endset -%}
 <head>
 	<meta charset="UTF-8" />
@@ -21,7 +21,7 @@
 	<meta name="twitter:creator" content="@{{ meta.twitterUsername }}" />
 	{% endif %}
 	<meta
-		name="twitter:text:title"
+		name="twitter:title"
 		content="{{pageTitle}}"
 	/>
 	<meta
