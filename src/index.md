@@ -30,6 +30,8 @@ This utility was built with the static site generator [Eleventy](https://11ty.de
 
 The primary dependency is the [sharp package resize API](https://sharp.pixelplumbing.com/api-resize) to help calculate the focal point using [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). Dynamically generated results are possible thanks to [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/).
 
+**Unfamilar with `object-fit`?** [Check out my 2.5 minute free egghead video >](https://egghead.io/lessons/css-apply-aspect-ratio-sizing-to-images-with-css-object-fit?af=2s65ms)
+
 <small><em>Credit for demo photo goes to <a href="https://unsplash.com/photos/0kCrlrs8gXg">Joshua Oyebanji</a> on Unsplash</em>.</small>
 
 <h2 id="options">API Options</h2>
