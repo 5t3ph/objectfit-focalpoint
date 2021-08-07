@@ -16,7 +16,7 @@ layout: base
   height: auto;
   aspect-ratio: 5/3;
   object-fit: cover;
-  object-position: 0% 86.25%;
+  object-position: 0% 86%;
 }
 ```
 
@@ -29,6 +29,8 @@ layout: base
 This utility was built with the static site generator [Eleventy](https://11ty.dev) and was created by [Stephanie Eckles](https://twitter.com/5t3ph) who is both [a big fan of 11ty](https://11ty.rocks) and an advocate for [modern CSS](https://moderncss.dev).
 
 The primary dependency is the [sharp package resize API](https://sharp.pixelplumbing.com/api-resize) to help calculate the focal point using [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). Dynamically generated results are possible thanks to [Eleventy Serverless](https://www.11ty.dev/docs/plugins/serverless/).
+
+The examples using a `ratio` require browser support for [`aspect-ratio`](https://caniuse.com/mdn-css_properties_aspect-ratio) (available in all evergreen browsers once Safari 15 is released).
 
 **Unfamilar with `object-fit`?** [Check out my 2.5 minute free egghead video >](https://egghead.io/lessons/css-apply-aspect-ratio-sizing-to-images-with-css-object-fit?af=2s65ms)
 
@@ -53,5 +55,9 @@ _Note:_ if you'd like a square, pass `&ratio=1/1`.
 Optionally, pass a desired image width and height to be used _instead of_ an aspect ratio for determining the `object-position` value.
 
 [{{ meta.url }}/generate/?image=https://source.unsplash.com/0kCrlrs8gXg/700x900&width=700&height=500]({{ meta.url }}/generate/?image=https://source.unsplash.com/0kCrlrs8gXg/700x900&width=700&height=500)
+
+## Eleventy Plugin
+
+A plugin is available for install into your own Eleventy project to include this functionality as a Nunjucks shortcode. **[Get the plugin >](https://www.npmjs.com/package/@11tyrocks/eleventy-plugin-objectfit-focalpoint)**
 
 </article>

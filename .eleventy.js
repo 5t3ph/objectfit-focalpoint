@@ -7,19 +7,30 @@ const fetch = require("node-fetch");
 const imgPos = async (image, width, height) => {
   const input = await fetch(image).then((resp) => resp.buffer());
 
-  return await sharp(input)
-    .resize(width, height, {
-      kernel: sharp.kernel.nearest,
-      position: sharp.strategy.entropy,
-    })
-    .toBuffer({ resolveWithObject: true })
-    .then(({ info }) => {
-      return {
-        x: info.cropOffsetLeft,
-        y: info.cropOffsetTop,
-      };
-    });
+  const baseImage = sharp(input);
+  const imageInfo = {};
+
+  return await baseImage.metadata().then(function (metadata) {
+    imageInfo["trueHeight"] = metadata.height;
+    imageInfo["trueWidth"] = metadata.width;
+
+    return baseImage
+      .resize(width, height, {
+        position: sharp.strategy.entropy,
+      })
+      .toBuffer({ resolveWithObject: true })
+      .then(({ info }) => {
+        imageInfo["x"] = info.cropOffsetLeft;
+        imageInfo["y"] = info.cropOffsetTop;
+
+        return imageInfo;
+      });
+  });
 };
+
+const defaultAspectRatio = "5/3";
+const defaultWidth = 800;
+const defaultHeight = 480;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./src/style.css");
@@ -36,20 +47,21 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode(
     "focusedAspectRatioImg",
     async function (image, width, height, ratio) {
-      ratio = !ratio && !width && !height ? "5/3" : ratio;
-      width = parseFloat(width) || 800;
-      height = parseFloat(height) || 480;
+      ratio = !ratio && !width && !height ? defaultAspectRatio : ratio;
+      width = parseFloat(width) || defaultWidth;
+      height = parseFloat(height) || defaultHeight;
 
       const baseWidth = width;
       const baseHeight = height;
 
-      if (ratio && ratio !== "5/3") {
+      if (ratio) {
         const aspectRatio = ratio.split("/");
         width = aspectRatio[0] * 100;
         height = aspectRatio[1] * 100;
       }
 
-      let { x, y } = await imgPos(image, width, height);
+      let { x, y, trueWidth, trueHeight } = await imgPos(image, width, height);
+
       x = x >= 0 ? x : x * -1;
       y = y >= 0 ? y : y * -1;
 
@@ -57,12 +69,16 @@ module.exports = function (eleventyConfig) {
       let percentY = 0;
 
       if (x > 0) {
-        percentX = x > width ? width / x : x / width;
+        percentX =
+          x > width ? ((baseWidth / trueWidth) * x) / baseWidth : x / width;
         percentX = (percentX * 100).toFixed(2);
       }
 
       if (y > 0) {
-        percentY = y > height ? height / y : y / height;
+        percentY =
+          y > height
+            ? ((baseHeight / trueHeight) * y) / baseHeight
+            : y / height;
         percentY = (percentY * 100).toFixed(2);
       }
 
