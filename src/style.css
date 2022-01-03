@@ -93,6 +93,7 @@ article {
 a {
   color: inherit;
   text-underline-offset: 0.15em;
+  word-break: break-all;
   overflow-wrap: anywhere;
 }
 

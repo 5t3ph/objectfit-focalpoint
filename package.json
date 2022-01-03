@@ -18,10 +18,10 @@
     "url": "https://github.com/5t3ph/objectfit-focalpoint/issues"
   },
   "dependencies": {
-    "@11ty/eleventy": "^1.0.0-canary.39",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
-    "@netlify/functions": "^0.7.2",
-    "node-fetch": "^2.6.1",
-    "sharp": "^0.28.3"
+    "@11ty/eleventy": "^1.0.0-beta.9",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.3",
+    "@netlify/functions": "^0.10.0",
+    "node-fetch": "2.6.6",
+    "sharp": "^0.29.3"
   }
 }
